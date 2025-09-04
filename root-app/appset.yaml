@@ -8,9 +8,9 @@ spec:
   - list:
       elements:
       - name: app-1
-        pruneEnabled: "true"
+        pruneEnabled: true
       - name: app-2
-        pruneEnabled: "false"
+        pruneEnabled: false
   template:
     metadata:
       name: '{{name}}'
