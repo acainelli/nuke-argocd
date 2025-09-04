@@ -13,7 +13,7 @@ spec:
         pruneEnabled: false
   template:
     metadata:
-      name: '{{name}}'
+      name: {{name}}
       namespace: default
     spec:
       project: default
@@ -26,7 +26,7 @@ spec:
         namespace: default
       syncPolicy:
         automated:
-          prune: '{{pruneEnabled | toBool }}'
+          prune: {{pruneEnabled }}
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
