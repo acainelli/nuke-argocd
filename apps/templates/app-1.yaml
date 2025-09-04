@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-1
+  name: hello-world-app-1
   namespace: default
 spec:
   project: default
@@ -10,7 +10,7 @@ spec:
     targetRevision: main
     path: charts/hello-world
     helm:
-      releaseName: app-1
+      releaseName: hello-world-app-1
   destination:
     server: https://kubernetes.default.svc
     namespace: default

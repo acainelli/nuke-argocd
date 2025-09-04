@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-world-app-2
+  name: root-app-1
   namespace: default
 spec:
   project: default
   source:
-    repoURL: https://github.com/helm/examples.git
-    targetRevision: main
-    path: charts/hello-world
+    repoURL: https://github.com/acainelli/nuke-argocd.git
+    targetRevision: HEAD
+    path: apps
     helm:
-      releaseName: hello-world-app-2
+      releaseName: root-app-1
   destination:
     server: https://kubernetes.default.svc
     namespace: default
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=false
