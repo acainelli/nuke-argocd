@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/acainelli/nuke-argocd.git
     targetRevision: HEAD
-    path: apps
+    path: apps/hello-world-app-1
     helm:
       releaseName: root-app-1
   destination:
