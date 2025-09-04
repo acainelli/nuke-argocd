@@ -26,7 +26,7 @@ spec:
         namespace: default
       syncPolicy:
         automated:
-          prune: '{{pruneEnabled}}'
+          prune: '{{pruneEnabled | toBool }}'
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
