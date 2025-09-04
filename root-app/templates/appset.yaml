@@ -21,8 +21,6 @@ spec:
         repoURL: https://github.com/helm/examples.git
         targetRevision: main
         path: charts/hello-world
-        helm:
-          releaseName: '{{name}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: default
