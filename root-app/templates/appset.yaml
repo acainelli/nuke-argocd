@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: example-apps
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - name: app-1
+        pruneEnabled: "true"
+      - name: app-2
+        pruneEnabled: "false"
+  template:
+    metadata:
+      name: '{{name}}'
+      namespace: default
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/helm/examples.git
+        targetRevision: main
+        path: charts/hello-world
+        helm:
+          releaseName: '{{name}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: '{{pruneEnabled}}'
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false
