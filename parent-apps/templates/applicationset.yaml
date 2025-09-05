@@ -7,8 +7,8 @@ spec:
   generators:
     - list:
         elements:
-          - name: child-apps
-            path: apps
+          - name: root-apps
+            path: root-apps
   template:
     metadata:
       name: "{{`{{name}}`}}"
