@@ -1,16 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: child-apps
+  name: parent-apps
   namespace: default
 spec:
   generators:
     - list:
         elements:
-          - name: hello-world-app-1
-            path: apps/hello-world-app-1
-          - name: hello-world-app-2
-            path: apps/hello-world-app-2
+          - name: child-apps
+            path: nuke-argocd/root-apps
   template:
     metadata:
       name: "{{`{{name}}`}}"
@@ -26,10 +24,3 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: default
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=false
-          - PruneLast=false
