@@ -4,6 +4,8 @@ metadata:
   name: parent-apps
   namespace: argocd
 spec:
+  preserveResourcesOnDeletion: true
+  applicationsSync: create-update
   generators:
     - list:
         elements:
@@ -27,7 +29,6 @@ spec:
         server: https://kubernetes.default.svc
         namespace: default
       syncPolicy:
-        preserveResourcesOnDeletion: true
         automated:
           prune: false
           selfHeal: true
