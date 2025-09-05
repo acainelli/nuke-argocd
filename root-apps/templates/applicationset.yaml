@@ -7,10 +7,8 @@ spec:
   generators:
     - list:
         elements:
-          - name: hello-world-app-1
-            path: apps/hello-world-app-1
-          - name: hello-world-app-2
-            path: apps/hello-world-app-2
+          - name: parent-apps
+            path: parent-apps
   template:
     metadata:
       name: "{{`{{name}}`}}"
