@@ -28,7 +28,6 @@ spec:
         namespace: default
       syncPolicy:
         preserveResourcesOnDeletion: true
-        applicationsSync: create-update
         automated:
           prune: false
           selfHeal: true
