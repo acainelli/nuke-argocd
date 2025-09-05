@@ -8,7 +8,7 @@ spec:
     - list:
         elements:
           - name: child-apps
-            path: nuke-argocd/apps
+            path: apps
   template:
     metadata:
       name: "{{`{{name}}`}}"
