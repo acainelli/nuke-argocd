@@ -4,7 +4,9 @@ metadata:
   name: parent-apps
   namespace: argocd
 spec:
-  preserveResourcesOnDeletion: true
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+    applicationsSync: create-update
   generators:
     - list:
         elements:
