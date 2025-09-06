@@ -28,7 +28,7 @@ spec:
         namespace: argocd
       syncPolicy:
           allowEmpty: true
-          prune: false
+          prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
