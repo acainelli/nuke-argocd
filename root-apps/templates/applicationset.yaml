@@ -10,6 +10,7 @@ spec:
           - path: parent-apps
         repoURL: https://github.com/acainelli/nuke-argocd.git
         requeueAfterSeconds: 20
+        revision: HEAD
   template:
     metadata:
       name: "{{`{{path.basename}}`}}"
