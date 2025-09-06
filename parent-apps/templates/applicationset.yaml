@@ -8,16 +8,15 @@ spec:
     preserveResourcesOnDeletion: true
     applicationsSync: create-update
   generators:
-    - git:
-        directories:
-          - path: apps/hello-world-app-1
-          - path: apps/hello-world-app-2
-        repoURL: https://github.com/acainelli/nuke-argocd.git
-        requeueAfterSeconds: 20
-        revision: HEAD
+    - list:
+        elements:
+          - name: hello-world-app-1-mgr
+            path: apps/hello-world-app-1
+          - name: hello-world-app-2-mgr
+            path: apps/hello-world-app-2
   template:
     metadata:
-      name: "{{`{{path.basename}}`}}"
+      name: "{{`{{name}}`}}"
       namespace: argocd
     spec:
       project: default
@@ -26,14 +25,13 @@ spec:
         targetRevision: HEAD
         path: "{{`{{path}}`}}"
         helm:
-          releaseName: "{{`{{path.basename}}`}}"
+          releaseName: "{{`{{name}}`}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: default
       syncPolicy:
         automated:
           prune: true
         syncOptions:
           - CreateNamespace=false
           - PruneLast=false
----
