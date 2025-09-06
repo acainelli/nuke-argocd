@@ -8,12 +8,13 @@ spec:
     preserveResourcesOnDeletion: true
     applicationsSync: create-update
   generators:
-    - list:
-        elements:
-          - name: hello-world-app-1-mgr
-            path: apps/hello-world-app-1
-          - name: hello-world-app-2-mgr
-            path: apps/hello-world-app-2
+    - git:
+        directories:
+          - path: apps/hello-world-app-1
+          - path: apps/hello-world-app-2
+        repoURL: https://github.com/acainelli/nuke-argocd.git
+        requeueAfterSeconds: 20
+        revision: HEAD
   template:
     metadata:
       name: "{{`{{name}}`}}"

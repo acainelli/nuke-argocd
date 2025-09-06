@@ -5,10 +5,12 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - list:
-        elements:
-          - name: parent-apps
-            path: parent-apps
+    - git:
+        directories:
+          - path: parent-apps
+        repoURL: https://github.com/acainelli/nuke-argocd.git
+        requeueAfterSeconds: 20
+        revision: HEAD
   template:
     metadata:
       name: "{{`{{name}}`}}"
