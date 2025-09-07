@@ -34,3 +34,4 @@ spec:
         syncOptions:
           - CreateNamespace=false
           - PruneLast=false 
+---
